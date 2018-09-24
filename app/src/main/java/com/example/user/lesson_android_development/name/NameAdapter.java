@@ -2,6 +2,7 @@ package com.example.user.lesson_android_development.name;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -32,7 +33,7 @@ public class NameAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((NameViewHolder)holder).setup(mList.get(position));
+        ((NameViewHolder) holder).setup(mList.get(position));
     }
 
     @Override
@@ -41,9 +42,11 @@ public class NameAdapter extends RecyclerView.Adapter {
     }
 
 
-    public void setItem(List list){
+    public void setItems(List<Name> items) {
+        List<Name> oldItems = mList;
+        DiffUtil.DiffResult result = DiffUtil.calculateDiff(new Name.Callback(oldItems, items));
         mList.clear();
-        mList.addAll(list);
-        notifyDataSetChanged();
+        mList.addAll(items);
+        result.dispatchUpdatesTo(this);
     }
 }

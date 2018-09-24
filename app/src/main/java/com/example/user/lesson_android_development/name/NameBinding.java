@@ -18,7 +18,7 @@ public class NameBinding {
     public static void setNameItems(RecyclerView recyclerView, List nameItems) {
 
         if (nameItems != null) {
-            ((NameAdapter) recyclerView.getAdapter()).setItem(nameItems);
+            ((NameAdapter) recyclerView.getAdapter()).setItems(nameItems);
         }
     }
 

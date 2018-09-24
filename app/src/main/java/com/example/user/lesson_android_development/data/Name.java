@@ -6,8 +6,11 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.v7.util.DiffUtil;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity(tableName = "name_table")
 public class Name implements Parcelable {
@@ -15,7 +18,6 @@ public class Name implements Parcelable {
     @ColumnInfo(name = "_id")
     @PrimaryKey(autoGenerate = true)
     private Integer mId;
-
 
     @ColumnInfo(name = "name")
     private String mName;
@@ -84,4 +86,35 @@ public class Name implements Parcelable {
             return new Name[size];
         }
     };
+
+    public static class Callback extends DiffUtil.Callback {
+
+        private final List<Name> mOldItems;
+        private final List<Name> mNewItems;
+
+        public Callback(List<Name> oldItems, List<Name> newItems) {
+            mOldItems = oldItems;
+            mNewItems = newItems;
+        }
+
+        @Override
+        public int getOldListSize() {
+            return mOldItems.size();
+        }
+
+        @Override
+        public int getNewListSize() {
+            return mNewItems.size();
+        }
+
+        @Override
+        public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
+            return mOldItems.get(oldItemPosition).getId() == mNewItems.get(newItemPosition).getId();
+        }
+
+        @Override
+        public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+            return mOldItems.get(oldItemPosition).getName().equals(mNewItems.get(newItemPosition).getName());
+        }
+    }
 }

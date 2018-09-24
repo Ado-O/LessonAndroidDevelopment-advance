@@ -2,6 +2,7 @@ package com.example.user.lesson_android_development.name;
 
 import android.app.Dialog;
 import android.arch.lifecycle.Observer;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -21,6 +22,7 @@ import com.example.user.lesson_android_development.databinding.NameActBinding;
 import com.example.user.lesson_android_development.util.ViewModelFactory;
 
 public class NameActivity extends AppCompatActivity {
+
 
     private static final String TAG = NameActivity.class.getSimpleName();
 
@@ -59,6 +61,14 @@ public class NameActivity extends AppCompatActivity {
     private void addData(){
         mNameViewModel.getOpenImageEvent().observe(this, name ->
                 mNameViewModel.clearName(name.getId())
+        );
+
+        mNameViewModel.getOpenNameEvent().observe(
+                NameActivity.this,
+                name -> {
+                    MainDialogFragment mainDialogFragment = MainDialogFragment.newInstance(name);
+                    mainDialogFragment.show(getSupportFragmentManager(), "dialog");
+                }
         );
 
     }

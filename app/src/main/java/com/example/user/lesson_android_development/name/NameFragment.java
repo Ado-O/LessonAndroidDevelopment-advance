@@ -29,6 +29,7 @@ public class NameFragment extends Fragment implements RecyclerViewClickListener 
     private DialogFragment newFragment;
     private NameViewModel mNameViewModel;
     private NameAdapter adapter;
+    private Name name = null;
 
     public static NameFragment sInstance(int id) {
 
@@ -69,13 +70,11 @@ public class NameFragment extends Fragment implements RecyclerViewClickListener 
 
     private void onCLickButton() {
         mNameFragBinding.btnAdd.setOnClickListener(v -> {
-            newFragment = MainDialogFragment.newInstance();
+            newFragment = MainDialogFragment.newInstance(name);
             newFragment.show(getFragmentManager(), "dialog");
         });
 
     }
-
-
 
     @Override
     public void recyclerViewListClicked(View v, Name name) {
@@ -86,8 +85,6 @@ public class NameFragment extends Fragment implements RecyclerViewClickListener 
     @Override
     public void recyclerViewListClickedName(View v, Name name) {
         mNameViewModel.getOpenNameEvent().setValue(name);
-        newFragment = MainDialogFragment.newInstance();
-        newFragment.show(getFragmentManager(), "dialog");
 
     }
 }

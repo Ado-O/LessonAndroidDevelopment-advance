@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 
 import com.example.user.lesson_android_development.data.Name;
 import com.example.user.lesson_android_development.util.ViewModelFactory;
@@ -14,12 +15,19 @@ import com.example.user.lesson_android_development.databinding.NameDialogBinding
 public class MainDialogFragment extends DialogFragment {
 
     public final static String TAG = MainDialogFragment.class.getSimpleName();
+    public final static String NAME_MODEL = "name";
 
     private NameDialogBinding mNameDialogBinding;
     private NameViewModel mNameViewModel;
+    private Name mName;
 
-    static MainDialogFragment newInstance() {
-        return new MainDialogFragment();
+    static MainDialogFragment newInstance(Name name) {
+        MainDialogFragment mainDialogFragment = new MainDialogFragment();
+        Bundle b = new Bundle();
+        b.putParcelable(NAME_MODEL, name);
+        mainDialogFragment.setArguments(b);
+
+        return mainDialogFragment;
     }
 
     @Override
@@ -29,6 +37,10 @@ public class MainDialogFragment extends DialogFragment {
 
         mNameViewModel = ViewModelFactory.obtainViewModel(getActivity(), NameViewModel.class);
 
+        mName = (Name) getArguments().getParcelable(NAME_MODEL);
+
+        //style for dialog
+        getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
         addButton();
         dissmissButton();
@@ -40,9 +52,9 @@ public class MainDialogFragment extends DialogFragment {
      * add data in edit text
      */
     public void editText() {
-        mNameViewModel.getOpenNameEvent().observe(getActivity(), name ->
-                mNameDialogBinding.myEditText.setText(name.getName())
-        );
+        if (mName != null) {
+            mNameDialogBinding.myEditText.setText(mName.getName());
+        }
     }
 
     /**
