@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <data>
 
         <variable
             name="viewModel"
             type="com.example.user.lesson_android_development.name.NameViewModel" />
     </data>
-
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -18,7 +15,9 @@
             android:id="@+id/rv_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="52dp"
+            android:clipToPadding="false"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:nameItems="@{viewModel.mNames}" />
 
@@ -36,16 +35,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:listenerItem="@{viewModel.mNames}" />
 
-        <Button
+        <android.support.design.button.MaterialButton
             android:id="@+id/btn_add"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_marginBottom="24dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="#2E4DFF"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            style="@style/Widget.MaterialComponents.Button"
+            app:backgroundTint="@color/colorPrimary"
             android:text="ADD"
-            android:textColor="#FFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />

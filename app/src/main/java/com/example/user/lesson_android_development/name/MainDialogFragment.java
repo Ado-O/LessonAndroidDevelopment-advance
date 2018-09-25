@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.example.user.lesson_android_development.data.Name;
 import com.example.user.lesson_android_development.util.ViewModelFactory;
@@ -41,6 +43,9 @@ public class MainDialogFragment extends DialogFragment {
 
         //style for dialog
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        //To cause the keyboard to appear
+        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
 
         addButton();
         dissmissButton();
@@ -54,6 +59,10 @@ public class MainDialogFragment extends DialogFragment {
     public void editText() {
         if (mName != null) {
             mNameDialogBinding.myEditText.setText(mName.getName());
+            mNameDialogBinding.add.setText("EDIT");
+            //add courser on the right
+            mNameDialogBinding.myEditText.setSelection(mNameDialogBinding.myEditText.getText().length());
+
         }
     }
 
@@ -62,11 +71,17 @@ public class MainDialogFragment extends DialogFragment {
      */
     public void addButton() {
         mNameDialogBinding.add.setOnClickListener(v -> {
+            //check if string is empty
+            if (mNameDialogBinding.myEditText.getText().toString().matches("")){
+                Toast.makeText(getActivity(), "You must add text", Toast.LENGTH_SHORT).show();
+            }else{
+                mNameViewModel.addNameItems(mNameDialogBinding.myEditText.getText().toString());
+                dismiss();
+                mNameViewModel.getNames();
+            }
 
-            mNameViewModel.addNameItems(mNameDialogBinding.myEditText.getText().toString());
-            dismiss();
-            mNameViewModel.getNames();
-
+            //add courser on the right
+            mNameDialogBinding.myEditText.setSelection(mNameDialogBinding.myEditText.getText().length());
         });
 
     }

@@ -2,20 +2,17 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <data>
         <variable
             name="item"
             type="java.util.List"/>
-
     </data>
 <FrameLayout
     android:id="@+id/name_dialog"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    style="@style/Theme.Design.Light.NoActionBar"
-    >
+    style="@style/Theme.Design.Light.NoActionBar">
 
 <android.support.constraint.ConstraintLayout
     android:layout_width="280dp"
@@ -40,29 +37,32 @@
         android:layout_marginRight="20dp"
         android:hint="Item name"
         app:backgroundTint="#727882"
+        android:ellipsize="end"
         app:layout_constraintTop_toBottomOf="@id/tv_title"
         />
 
-    <Button
+    <android.support.design.button.MaterialButton
         android:id="@+id/dissmiss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:text="DISSMISS"
         android:layout_margin="10dp"
         android:textColor="#727882"
         android:background="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@id/myEditText"
         app:layout_constraintRight_toLeftOf="@id/add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-    <Button
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <android.support.design.button.MaterialButton
         android:id="@+id/add"
-        android:layout_width="68dp"
-        android:layout_height="36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button"
         android:text="ADD"
         android:textColor="#FFFF"
         android:layout_margin="10dp"
-        android:background="#2E4DFF"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_constraintTop_toBottomOf="@id/myEditText"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
