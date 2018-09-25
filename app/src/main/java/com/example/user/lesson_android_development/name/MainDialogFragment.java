@@ -46,7 +46,6 @@ public class MainDialogFragment extends DialogFragment {
         //To cause the keyboard to appear
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
-
         addButton();
         dissmissButton();
         editText();
@@ -73,7 +72,7 @@ public class MainDialogFragment extends DialogFragment {
         mNameDialogBinding.add.setOnClickListener(v -> {
             //check if string is empty
             if (mNameDialogBinding.myEditText.getText().toString().matches("")){
-                Toast.makeText(getActivity(), "You must add text", Toast.LENGTH_SHORT).show();
+                mNameDialogBinding.textInputLayout.setError("You need to enter a name");
             }else{
                 mNameViewModel.addNameItems(mNameDialogBinding.myEditText.getText().toString());
                 dismiss();
