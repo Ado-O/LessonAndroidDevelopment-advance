@@ -1,4 +1,4 @@
-package com.example.user.lesson_android_development;
+package com.spartanapp.recipe.chef;
 
 import org.junit.Test;
 

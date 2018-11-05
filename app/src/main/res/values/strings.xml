@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Lesson-Android-Development</string>
+    <string name="appBase64" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnfKK5TL4MEKCg10ZIEyp4mqjdF8xT+vgTVU9/DP4Gs8sQf40O21gV/7Tfv1ghWJ0qZ6+h5rJ8+vCefoMhVi3g1e6VjxP6t3E58oYbKDYWUE58KcrchTVszryCugRmw1IYI0ElU9CnJmzann6iotljjLlxMjEa0oTrAZ+TIaQDwqmnYg5XuoxXtIA+bn3BdjDJdQj4q0KVWg96bYNZTYsYW7eK0tH3KRCRI3x9welGXwOr3sOUbE3XwzUqFxGkoAI7zCohkzowziwibM8mrJNg7BHFE8556p5fkHgbGr869Q6zLrKqch7RoQ56RNwbLWBnJXdRCACywn7W8LBuR1oawIDAQAB</string>
 </resources>

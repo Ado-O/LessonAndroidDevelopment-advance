@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.user.lesson_android_development"
+        applicationId "com.spartanapp.recipe.chef"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
@@ -61,4 +61,7 @@ dependencies {
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "com.android.support.test:runner:$android_support_test_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
+
+    implementation 'com.android.billingclient:billing:1.1'
+
 }

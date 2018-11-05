@@ -1,4 +1,4 @@
-package com.example.user.lesson_android_development.util;
+package com.spartanapp.recipe.chef.util;
 
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.MutableLiveData;

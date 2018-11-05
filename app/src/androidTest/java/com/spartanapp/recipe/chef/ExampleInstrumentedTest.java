@@ -1,4 +1,4 @@
-package com.example.user.lesson_android_development;
+package com.spartanapp.recipe.chef;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
